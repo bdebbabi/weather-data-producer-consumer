@@ -14,13 +14,13 @@ Create a `.env` file from the `.env.sample` containing:
 
 To run without authentication, set `allow_anonymous` as `true` in `config/mosquitto.conf`.
 
-Otherwise set `allow_anonymous` as `false` and create a `config/password.txt` encrypted file containing the `username:password`. You can use the script below to autmatically create an encrypt the file:
+Otherwise set `allow_anonymous` as `false` and create a `config/password.txt` encrypted file containing the `username:password`. You can use the script below to automatically create and encrypt the file:
 
 ```bash
-export MOSQUITTO_USERNAME=myusername
-export MOSQUITTO_PASSWORD=mypassword
+$ export MOSQUITTO_USERNAME=myusername
+$ export MOSQUITTO_PASSWORD=mypassword
 
-echo $(docker run --rm -it eclipse-mosquitto sh -c "\
+$ echo $(docker run --rm -it eclipse-mosquitto sh -c "\
 mosquitto_passwd -b -c ./mosquitto/config/password.txt $MOSQUITTO_USERNAME $MOSQUITTO_PASSWORD && \
 cat ./mosquitto/config/password.txt")\
 > config/password.txt
