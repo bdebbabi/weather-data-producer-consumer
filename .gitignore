@@ -1,0 +1,8 @@
+# python
+__pycache__
+.venv
+.python-version
+
+# env
+.env
+config/password.txt
